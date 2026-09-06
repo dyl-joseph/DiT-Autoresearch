@@ -1,0 +1,15 @@
+{
+  "metrics": {
+    "benchmark_accuracy": 0.8732,
+    "prompt_adherence": 0.8121
+  },
+  "cases": {
+    "case_001": {"passed": true},
+    "case_002": {"passed": true},
+    "case_003": {"passed": true}
+  },
+  "metadata": {
+    "benchmark_revision": "abc123",
+    "seed_manifest_sha256": "..."
+  }
+}

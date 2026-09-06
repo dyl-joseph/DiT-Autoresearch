@@ -1,0 +1,57 @@
+{
+  "project_name": "my-dit-inference-project",
+  "state_dir": ".autoresearch",
+  "results_tsv": ".autoresearch/results.tsv",
+  "knowledge_dir": "knowledge/handbook",
+  "quality_contract": "config/quality_contract.json",
+  "target": {
+    "require_a5500": true,
+    "architecture": "Ampere",
+    "expected_compute_capability": "8.6",
+    "gpu_count": 1
+  },
+  "mutable_paths": [
+    "src/model_runtime.py",
+    "src/kernels",
+    "src/pipeline_runtime.py"
+  ],
+  "fixed_paths": [
+    "benchmarks",
+    "eval",
+    "scripts/bench_perf.py",
+    "scripts/eval_quality.py"
+  ],
+  "commands": {
+    "smoke": "python scripts/smoke_test.py",
+    "perf": "python scripts/bench_perf.py --output {run_dir}/perf.json",
+    "quality": "python scripts/eval_quality.py --output {run_dir}/quality.json",
+    "profile": "nsys profile --trace=cuda,nvtx,osrt --sample=none --force-overwrite=true -o {run_dir}/nsys python scripts/bench_one_case.py"
+  },
+  "timeouts_seconds": {
+    "smoke": 300,
+    "perf": 1800,
+    "quality": 3600
+  },
+  "objective": {
+    "metric": "latency.median_s",
+    "direction": "lower",
+    "min_improvement_fraction": 0.005,
+    "min_improvement_abs": 0.0
+  },
+  "performance_guardrails": {
+    "latency.p95_s": {
+      "direction": "lower",
+      "max_rel_regression": 0.01,
+      "required": true
+    },
+    "peak_vram_mb": {
+      "direction": "lower",
+      "max_rel_regression": 0.05,
+      "required": true
+    }
+  },
+  "quantization": {
+    "enabled_for_research": true,
+    "strict_no_regression": true
+  }
+}

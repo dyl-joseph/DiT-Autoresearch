@@ -1,0 +1,20 @@
+{
+  "latency": {
+    "median_s": 7.832,
+    "p95_s": 7.991,
+    "mean_s": 7.851
+  },
+  "throughput_items_s": 0.1277,
+  "peak_vram_mb": 21984.0,
+  "persistent_vram_mb": 18720.0,
+  "cold_start_s": 14.7,
+  "compile_s": 0.0,
+  "metadata": {
+    "model": "MODEL@REVISION",
+    "dtype": "float16",
+    "width": 1024,
+    "height": 1024,
+    "steps": 30,
+    "batch": 1
+  }
+}

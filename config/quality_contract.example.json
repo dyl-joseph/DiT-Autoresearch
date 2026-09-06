@@ -1,0 +1,11 @@
+{
+  "strict_zero_regression": true,
+  "require_case_passes": true,
+  "metrics": {
+    "benchmark_accuracy": {
+      "direction": "higher",
+      "max_abs_regression": 0.0,
+      "max_rel_regression": 0.0
+    }
+  }
+}

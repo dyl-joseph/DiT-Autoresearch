@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dit-autoresearch-a5500"
+version = "0.1.0"
+description = "Karpathy-style autonomous research loop for Diffusion Transformer inference optimization on NVIDIA RTX A5500/Ampere with strict quality gates."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "OpenAI-generated research harness"}]
+dependencies = []
+
+[project.scripts]
+dit-ar = "dit_autoresearch.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["dit_autoresearch*"]
